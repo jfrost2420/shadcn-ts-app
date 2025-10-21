@@ -1,9 +1,5 @@
-import Page from "./app/dashboard/page"
-
 function App() {
-  return (
-    <Page />
-  )
+  return null
 }
 
 export default App
