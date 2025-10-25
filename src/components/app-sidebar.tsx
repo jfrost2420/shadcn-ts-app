@@ -56,16 +56,16 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Blank",
+          url: "/",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Grid",
+          url: "/test",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Sample",
+          url: "/test2",
         },
       ],
     },
