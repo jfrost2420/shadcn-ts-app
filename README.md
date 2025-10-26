@@ -75,6 +75,8 @@ export default defineConfig([
 # DHTMLX Gnatt React documentation
 
 Gihub:  https://github.com/DHTMLX/gantt?tab=readme-ov-file#readme
+
 Documentation:  https://docs.dhtmlx.com/gantt/
+
 React Integration:  https://dhtmlx.com/blog/create-react-gantt-chart-component-dhtmlxgantt/
 
