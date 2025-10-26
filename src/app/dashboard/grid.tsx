@@ -36,7 +36,10 @@ export default function Test() {
   }, [])
 	return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-      <div ref={gridContainerRef} className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+      <div
+        ref={gridContainerRef}
+        style={ {width: "100%", height: "100%"} }
+        className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
     </div>
 	)
 }

@@ -61,11 +61,11 @@ const data = {
         },
         {
           title: "Grid",
-          url: "/test",
+          url: "/grid",
         },
         {
-          title: "Sample",
-          url: "/test2",
+          title: "Gantt",
+          url: "/gantt",
         },
       ],
     },
