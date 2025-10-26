@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 import Page from "./app/dashboard/page"
-import Test from "./app/dashboard/test"
-import Test2 from "./app/dashboard/test2"
+import Test from "./app/dashboard/grid"
+import Gnatt from "./app/dashboard/gnatt"
 
 const router = createBrowserRouter([
   {
@@ -9,12 +9,12 @@ const router = createBrowserRouter([
     Component: Page,
     children: [
       {
-          path: "test",
+          path: "grid",
           Component: Test,
       },
       {
-        path: "test2",
-        Component: Test2,
+        path: "gantt",
+        Component: Gnatt,
       }
     ]
   },
