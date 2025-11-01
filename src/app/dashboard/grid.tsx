@@ -1,6 +1,7 @@
-import { Grid as GridDHX, DataCollection } from "dhx-grid";
+import { Grid as GridDHX } from "dhx-grid";
 import { useEffect, useRef } from "react";
 import "dhx-grid/codebase/grid.min.css";
+import { gridColumns, gridData } from "./gridConfig";
 
 export default function Test() {
   const gridContainerRef = useRef<HTMLDivElement | null>(null);
@@ -11,18 +12,10 @@ export default function Test() {
 
     // create and store the grid instance on a ref so cleanup can access it
     gridRef.current = new GridDHX(gridContainerRef.current, {
-      columns: [
-        { id: "id", header: [{ text: "ID" }], width: 100 },
-        { id: "name", header: [{ text: "Name" }], width: 200 },
-        { id: "age", header: [{ text: "Age" }], width: 100 },
-      ],
+      columns: gridColumns,
       // freeze the first (leftmost) column
       leftSplit: 1,
-      data: [
-        { id: 1, name: "John Doe", age: 30 },
-        { id: 2, name: "Jane Smith", age: 25 },
-        { id: 3, name: "Sam Johnson", age: 40 },
-      ],
+      data: gridData,
     });
 
     return () => {
