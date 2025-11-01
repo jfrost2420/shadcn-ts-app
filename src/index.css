@@ -119,3 +119,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Fix z-index layering for DHTMLX Grid frozen columns to prevent overlap with dropdown menus */
+.dhx_header-fixed-cols,
+.dhx_grid-fixed-cols-wrap,
+.dhx_grid__cols-border--frozen {
+  z-index: 10 !important;
+}
