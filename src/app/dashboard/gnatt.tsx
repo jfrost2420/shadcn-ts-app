@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 export default function Test2() {
 
-  let container = useRef<HTMLDivElement | null>(null) 
+  const container = useRef<HTMLDivElement | null>(null) 
  
   useEffect(() => { 
     gantt.config.date_format = "%Y-%m-%d %H:%i";
