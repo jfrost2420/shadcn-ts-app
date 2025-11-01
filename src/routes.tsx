@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom"
-import Page from "./app/dashboard/page"
-import Grid from "./app/dashboard/grid"
-import Gnatt from "./app/dashboard/gnatt"
+import { createBrowserRouter } from "react-router-dom";
+import Page from "./app/dashboard/page";
+import Grid from "./app/dashboard/grid";
+import Gnatt from "./app/dashboard/gnatt";
 
 const router = createBrowserRouter([
   {
@@ -9,15 +9,15 @@ const router = createBrowserRouter([
     Component: Page,
     children: [
       {
-          path: "grid",
-          Component: Grid,
+        path: "grid",
+        Component: Grid,
       },
       {
         path: "gantt",
         Component: Gnatt,
-      }
-    ]
+      },
+    ],
   },
-])
+]);
 
-export default router
+export default router;
