@@ -121,8 +121,17 @@
 }
 
 /* Fix z-index layering for DHTMLX Grid frozen columns to prevent overlap with dropdown menus */
-.dhx_header-fixed-cols,
+.dhx_header-fixed-cols {
+  z-index: 23 !important;
+}
+
 .dhx_grid-fixed-cols-wrap,
 .dhx_grid__cols-border--frozen {
-  z-index: 10 !important;
+  z-index: 22 !important;
+}
+
+/* Constrain frozen column header inner content to prevent covering other headers */
+.dhx_header-fixed-cols .dhx_grid-header {
+  width: 100px !important;
+  overflow: hidden !important;
 }
