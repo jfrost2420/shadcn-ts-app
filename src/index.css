@@ -127,12 +127,8 @@
   z-index: 22 !important;
 }
 
-/* Ensure frozen column header content is visible */
-.dhx_header-fixed-cols {
-  overflow: visible !important;
-}
-
-/* Ensure header wrapper doesn't cover frozen columns */
-.dhx_header-wrapper {
-  z-index: 10 !important;
+/* Constrain frozen column header inner content to prevent covering other headers */
+.dhx_header-fixed-cols .dhx_grid-header {
+  width: 100px !important;
+  overflow: hidden !important;
 }
