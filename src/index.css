@@ -132,6 +132,6 @@
 
 /* Constrain frozen column header inner content to prevent covering other headers */
 .dhx_header-fixed-cols .dhx_grid-header {
-  width: 100px !important;
+  width: 300px !important;
   overflow: hidden !important;
 }
