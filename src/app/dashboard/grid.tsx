@@ -14,7 +14,7 @@ export default function Test() {
     gridRef.current = new GridDHX(gridContainerRef.current, {
       columns: gridColumns,
       // freeze the first (leftmost) column
-      leftSplit: 1,
+      leftSplit: 2,
       data: gridData,
     });
 
