@@ -1,35 +1,34 @@
 export const gridColumns = [
   { id: "id", header: [{ text: "Student ID" }], width: 120 },
   { id: "name", header: [{ text: "Student Name" }], width: 200 },
-  { id: "age", header: [{ text: "Grade Level" }], width: 120 },
-  { id: "hw1", header: [{ text: "HW 1" }], width: 100 },
-  { id: "hw2", header: [{ text: "HW 2" }], width: 100 },
-  { id: "hw3", header: [{ text: "HW 3" }], width: 100 },
-  { id: "hw4", header: [{ text: "HW 4" }], width: 100 },
-  { id: "hw5", header: [{ text: "HW 5" }], width: 100 },
-  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100 },
-  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100 },
-  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100 },
-  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100 },
-  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100 },
-  { id: "test1", header: [{ text: "Test 1" }], width: 100 },
-  { id: "test2", header: [{ text: "Test 2" }], width: 100 },
-  { id: "test3", header: [{ text: "Test 3" }], width: 100 },
-  { id: "test4", header: [{ text: "Test 4" }], width: 100 },
-  { id: "lab1", header: [{ text: "Lab 1" }], width: 100 },
-  { id: "lab2", header: [{ text: "Lab 2" }], width: 100 },
-  { id: "lab3", header: [{ text: "Lab 3" }], width: 100 },
-  { id: "lab4", header: [{ text: "Lab 4" }], width: 100 },
-  { id: "project1", header: [{ text: "Project 1" }], width: 110 },
-  { id: "project2", header: [{ text: "Project 2" }], width: 110 },
-  { id: "essay1", header: [{ text: "Essay 1" }], width: 100 },
-  { id: "essay2", header: [{ text: "Essay 2" }], width: 100 },
-  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130 },
-  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130 },
-  { id: "midterm", header: [{ text: "Midterm" }], width: 100 },
-  { id: "final", header: [{ text: "Final Exam" }], width: 110 },
-  { id: "participation", header: [{ text: "Participation" }], width: 120 },
-  { id: "avg", header: [{ text: "Average" }], width: 100 },
+  { id: "hw1", header: [{ text: "HW 1" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "hw2", header: [{ text: "HW 2" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "hw3", header: [{ text: "HW 3" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "hw4", header: [{ text: "HW 4" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "hw5", header: [{ text: "HW 5" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "test1", header: [{ text: "Test 1" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "test2", header: [{ text: "Test 2" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "test3", header: [{ text: "Test 3" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "test4", header: [{ text: "Test 4" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "lab1", header: [{ text: "Lab 1" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "lab2", header: [{ text: "Lab 2" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "lab3", header: [{ text: "Lab 3" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "lab4", header: [{ text: "Lab 4" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "project1", header: [{ text: "Project 1" }], width: 110, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "project2", header: [{ text: "Project 2" }], width: 110, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "essay1", header: [{ text: "Essay 1" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "essay2", header: [{ text: "Essay 2" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
+  { id: "midterm", header: [{ text: "Midterm" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
+  { id: "final", header: [{ text: "Final Exam" }], width: 110, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "participation", header: [{ text: "Participation" }], width: 120, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
+  { id: "avg", header: [{ text: "Average" }], width: 100, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
   { id: "attendance", header: [{ text: "Attendance %" }], width: 130 },
 ];
 
@@ -37,7 +36,6 @@ export const gridColumns = [
 function createStudentRow(
   id: number,
   name: string,
-  gradeLevel: number,
   basePerformance: number // Base performance 0-100 to add some variation
 ) {
   // Helper to generate grade with some randomness around base performance
@@ -85,7 +83,6 @@ function createStudentRow(
   const row: Record<string, string | number> = {
     id,
     name,
-    age: gradeLevel,
     hw1: assignments[0],
     hw2: assignments[1],
     hw3: assignments[2],
@@ -154,5 +151,5 @@ const studentData = [
 
 // Generate grid data using the factory function
 export const gridData = studentData.map((student, index) =>
-  createStudentRow(index + 1, student.name, student.gradeLevel, student.basePerformance)
+  createStudentRow(index + 1, student.name, student.basePerformance)
 );
