@@ -3,6 +3,13 @@ import { useEffect, useRef } from "react";
 import "dhx-grid/codebase/grid.min.css";
 import { gridColumns, gridData } from "./gridConfig";
 
+// Extend DHTMLX Grid with custom median calculation method
+declare global {
+  interface Window {
+    dhx?: any;
+  }
+}
+
 export default function Test() {
   const gridContainerRef = useRef<HTMLDivElement | null>(null);
   const gridRef = useRef<any | null>(null);
@@ -10,12 +17,18 @@ export default function Test() {
     if (!gridContainerRef.current) return;
     console.log("[Test] mounting grid");
 
+    // Add custom median method to DHTMLX if not already defined
+    // Note: We need to add this to the Grid instance's methods or use a custom summary function
+    
     // create and store the grid instance on a ref so cleanup can access it
     gridRef.current = new GridDHX(gridContainerRef.current, {
       columns: gridColumns,
       // freeze the first (leftmost) column
       leftSplit: 2,
       data: gridData,
+      editable: true,
+      htmlEnable: true,
+      footerRowHeight: 120,
     });
 
     return () => {

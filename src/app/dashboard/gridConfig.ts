@@ -1,34 +1,68 @@
+// Function to create a summary map with median calculation for a specific column
+const createSummaryMap = (columnId: string) => ({
+  avg: "avg",
+  med: (rows: any[]) => {
+    const values = rows.map(row => row[columnId]).filter(val => val !== undefined && val !== null);
+    if (values.length === 0) return 0;
+    values.sort((a, b) => a - b);
+    const mid = Math.floor(values.length / 2);
+    return values.length % 2 !== 0 ? values[mid] : (values[mid - 1] + values[mid]) / 2;
+  },
+  max: "max",
+  min: "min",
+  sum: "sum"
+});
+
+// Function to format footer template with all statistics
+const getFooterTemplate = (summary: any) => {
+  const avg = summary.avg ? Math.round(summary.avg * 10) / 10 : 0;
+  const med = summary.med ? Math.round(summary.med * 10) / 10 : 0;
+  const max = summary.max || 0;
+  const min = summary.min || 0;
+  const sum = summary.sum || 0;
+  
+  return `
+    <div style="line-height: 1.2; font-size: 11px;">
+      <div><b>Avg:</b> ${avg}</div>
+      <div><b>Med:</b> ${med}</div>
+      <div><b>Max:</b> ${max}</div>
+      <div><b>Min:</b> ${min}</div>
+      <div><b>Sum:</b> ${sum}</div>
+    </div>
+  `;
+};
+
 export const gridColumns = [
   { id: "id", header: [{ text: "Student ID" }], width: 120 },
   { id: "name", header: [{ text: "Student Name" }], width: 200 },
-  { id: "hw1", header: [{ text: "HW 1" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "hw2", header: [{ text: "HW 2" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "hw3", header: [{ text: "HW 3" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "hw4", header: [{ text: "HW 4" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "hw5", header: [{ text: "HW 5" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "test1", header: [{ text: "Test 1" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "test2", header: [{ text: "Test 2" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "test3", header: [{ text: "Test 3" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "test4", header: [{ text: "Test 4" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "lab1", header: [{ text: "Lab 1" }], width: 100, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "lab2", header: [{ text: "Lab 2" }], width: 100, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "lab3", header: [{ text: "Lab 3" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "lab4", header: [{ text: "Lab 4" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "project1", header: [{ text: "Project 1" }], width: 110, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "project2", header: [{ text: "Project 2" }], width: 110, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "essay1", header: [{ text: "Essay 1" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "essay2", header: [{ text: "Essay 2" }], width: 100, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130, editable: true, summary: "max", footer: [{ text: (val: any) => String(val.max || 0) }] },
-  { id: "midterm", header: [{ text: "Midterm" }], width: 100, editable: true, summary: "sum", footer: [{ text: (val: any) => String(val.sum || 0) }] },
-  { id: "final", header: [{ text: "Final Exam" }], width: 110, editable: true, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
-  { id: "participation", header: [{ text: "Participation" }], width: 120, editable: true, summary: "min", footer: [{ text: (val: any) => String(val.min || 0) }] },
-  { id: "avg", header: [{ text: "Average" }], width: 100, summary: "avg", footer: [{ text: (val: any) => String(Math.round((val.avg || 0) * 10) / 10) }] },
+  { id: "hw1", header: [{ text: "HW 1" }], width: 100, editable: true, summary: createSummaryMap("hw1"), footer: [{ text: getFooterTemplate }] },
+  { id: "hw2", header: [{ text: "HW 2" }], width: 100, editable: true, summary: createSummaryMap("hw2"), footer: [{ text: getFooterTemplate }] },
+  { id: "hw3", header: [{ text: "HW 3" }], width: 100, editable: true, summary: createSummaryMap("hw3"), footer: [{ text: getFooterTemplate }] },
+  { id: "hw4", header: [{ text: "HW 4" }], width: 100, editable: true, summary: createSummaryMap("hw4"), footer: [{ text: getFooterTemplate }] },
+  { id: "hw5", header: [{ text: "HW 5" }], width: 100, editable: true, summary: createSummaryMap("hw5"), footer: [{ text: getFooterTemplate }] },
+  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100, editable: true, summary: createSummaryMap("quiz1"), footer: [{ text: getFooterTemplate }] },
+  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100, editable: true, summary: createSummaryMap("quiz2"), footer: [{ text: getFooterTemplate }] },
+  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100, editable: true, summary: createSummaryMap("quiz3"), footer: [{ text: getFooterTemplate }] },
+  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100, editable: true, summary: createSummaryMap("quiz4"), footer: [{ text: getFooterTemplate }] },
+  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100, editable: true, summary: createSummaryMap("quiz5"), footer: [{ text: getFooterTemplate }] },
+  { id: "test1", header: [{ text: "Test 1" }], width: 100, editable: true, summary: createSummaryMap("test1"), footer: [{ text: getFooterTemplate }] },
+  { id: "test2", header: [{ text: "Test 2" }], width: 100, editable: true, summary: createSummaryMap("test2"), footer: [{ text: getFooterTemplate }] },
+  { id: "test3", header: [{ text: "Test 3" }], width: 100, editable: true, summary: createSummaryMap("test3"), footer: [{ text: getFooterTemplate }] },
+  { id: "test4", header: [{ text: "Test 4" }], width: 100, editable: true, summary: createSummaryMap("test4"), footer: [{ text: getFooterTemplate }] },
+  { id: "lab1", header: [{ text: "Lab 1" }], width: 100, editable: true, summary: createSummaryMap("lab1"), footer: [{ text: getFooterTemplate }] },
+  { id: "lab2", header: [{ text: "Lab 2" }], width: 100, editable: true, summary: createSummaryMap("lab2"), footer: [{ text: getFooterTemplate }] },
+  { id: "lab3", header: [{ text: "Lab 3" }], width: 100, editable: true, summary: createSummaryMap("lab3"), footer: [{ text: getFooterTemplate }] },
+  { id: "lab4", header: [{ text: "Lab 4" }], width: 100, editable: true, summary: createSummaryMap("lab4"), footer: [{ text: getFooterTemplate }] },
+  { id: "project1", header: [{ text: "Project 1" }], width: 110, editable: true, summary: createSummaryMap("project1"), footer: [{ text: getFooterTemplate }] },
+  { id: "project2", header: [{ text: "Project 2" }], width: 110, editable: true, summary: createSummaryMap("project2"), footer: [{ text: getFooterTemplate }] },
+  { id: "essay1", header: [{ text: "Essay 1" }], width: 100, editable: true, summary: createSummaryMap("essay1"), footer: [{ text: getFooterTemplate }] },
+  { id: "essay2", header: [{ text: "Essay 2" }], width: 100, editable: true, summary: createSummaryMap("essay2"), footer: [{ text: getFooterTemplate }] },
+  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130, editable: true, summary: createSummaryMap("presentation1"), footer: [{ text: getFooterTemplate }] },
+  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130, editable: true, summary: createSummaryMap("presentation2"), footer: [{ text: getFooterTemplate }] },
+  { id: "midterm", header: [{ text: "Midterm" }], width: 100, editable: true, summary: createSummaryMap("midterm"), footer: [{ text: getFooterTemplate }] },
+  { id: "final", header: [{ text: "Final Exam" }], width: 110, editable: true, summary: createSummaryMap("final"), footer: [{ text: getFooterTemplate }] },
+  { id: "participation", header: [{ text: "Participation" }], width: 120, editable: true, summary: createSummaryMap("participation"), footer: [{ text: getFooterTemplate }] },
+  { id: "avg", header: [{ text: "Average" }], width: 100, summary: createSummaryMap("avg"), footer: [{ text: getFooterTemplate }] },
   { id: "attendance", header: [{ text: "Attendance %" }], width: 130 },
 ];
 
