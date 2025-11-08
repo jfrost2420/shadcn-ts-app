@@ -1,89 +1,158 @@
 export const gridColumns = [
-  { id: "id", header: [{ text: "ID" }], width: 100 },
-  { id: "name", header: [{ text: "Name" }], width: 200 },
-  { id: "age", header: [{ text: "Age" }], width: 100 },
-  { id: "col1", header: [{ text: "col 1" }], width: 100 },
-  { id: "col2", header: [{ text: "col 2" }], width: 100 },
-  { id: "col3", header: [{ text: "col 3" }], width: 100 },
-  { id: "col4", header: [{ text: "col 4" }], width: 100 },
-  { id: "col5", header: [{ text: "col 5" }], width: 100 },
-  { id: "col6", header: [{ text: "col 6" }], width: 100 },
-  { id: "col7", header: [{ text: "col 7" }], width: 100 },
-  { id: "col8", header: [{ text: "col 8" }], width: 100 },
-  { id: "col9", header: [{ text: "col 9" }], width: 100 },
-  { id: "col10", header: [{ text: "col 10" }], width: 100 },
-  { id: "col11", header: [{ text: "col 11" }], width: 100 },
-  { id: "col12", header: [{ text: "col 12" }], width: 100 },
-  { id: "col13", header: [{ text: "col 13" }], width: 100 },
-  { id: "col14", header: [{ text: "col 14" }], width: 100 },
-  { id: "col15", header: [{ text: "col 15" }], width: 100 },
-  { id: "col16", header: [{ text: "col 16" }], width: 100 },
-  { id: "col17", header: [{ text: "col 17" }], width: 100 },
-  { id: "col18", header: [{ text: "col 18" }], width: 100 },
-  { id: "col19", header: [{ text: "col 19" }], width: 100 },
-  { id: "col20", header: [{ text: "col 20" }], width: 100 },
-  { id: "col21", header: [{ text: "col 21" }], width: 100 },
-  { id: "col22", header: [{ text: "col 22" }], width: 100 },
-  { id: "col23", header: [{ text: "col 23" }], width: 100 },
-  { id: "col24", header: [{ text: "col 24" }], width: 100 },
-  { id: "col25", header: [{ text: "col 25" }], width: 100 },
-  { id: "col26", header: [{ text: "col 26" }], width: 100 },
-  { id: "col27", header: [{ text: "col 27" }], width: 100 },
-  { id: "col28", header: [{ text: "col 28" }], width: 100 },
-  { id: "col29", header: [{ text: "col 29" }], width: 100 },
-  { id: "col30", header: [{ text: "col 30" }], width: 100 },
+  { id: "id", header: [{ text: "Student ID" }], width: 120 },
+  { id: "name", header: [{ text: "Student Name" }], width: 200 },
+  { id: "age", header: [{ text: "Grade Level" }], width: 120 },
+  { id: "hw1", header: [{ text: "HW 1" }], width: 100 },
+  { id: "hw2", header: [{ text: "HW 2" }], width: 100 },
+  { id: "hw3", header: [{ text: "HW 3" }], width: 100 },
+  { id: "hw4", header: [{ text: "HW 4" }], width: 100 },
+  { id: "hw5", header: [{ text: "HW 5" }], width: 100 },
+  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100 },
+  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100 },
+  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100 },
+  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100 },
+  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100 },
+  { id: "test1", header: [{ text: "Test 1" }], width: 100 },
+  { id: "test2", header: [{ text: "Test 2" }], width: 100 },
+  { id: "test3", header: [{ text: "Test 3" }], width: 100 },
+  { id: "test4", header: [{ text: "Test 4" }], width: 100 },
+  { id: "lab1", header: [{ text: "Lab 1" }], width: 100 },
+  { id: "lab2", header: [{ text: "Lab 2" }], width: 100 },
+  { id: "lab3", header: [{ text: "Lab 3" }], width: 100 },
+  { id: "lab4", header: [{ text: "Lab 4" }], width: 100 },
+  { id: "project1", header: [{ text: "Project 1" }], width: 110 },
+  { id: "project2", header: [{ text: "Project 2" }], width: 110 },
+  { id: "essay1", header: [{ text: "Essay 1" }], width: 100 },
+  { id: "essay2", header: [{ text: "Essay 2" }], width: 100 },
+  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130 },
+  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130 },
+  { id: "midterm", header: [{ text: "Midterm" }], width: 100 },
+  { id: "final", header: [{ text: "Final Exam" }], width: 110 },
+  { id: "participation", header: [{ text: "Participation" }], width: 120 },
+  { id: "avg", header: [{ text: "Average" }], width: 100 },
+  { id: "attendance", header: [{ text: "Attendance %" }], width: 130 },
 ];
 
-// Factory function to create grid row data
-function createGridRow(id: number, name: string, age: number) {
+// Factory function to create grid row data for a student
+function createStudentRow(
+  id: number,
+  name: string,
+  gradeLevel: number,
+  basePerformance: number // Base performance 0-100 to add some variation
+) {
+  // Helper to generate grade with some randomness around base performance
+  const generateGrade = (offset: number = 0) => {
+    const grade = Math.min(100, Math.max(0, basePerformance + offset + (Math.random() * 20 - 10)));
+    return Math.round(grade);
+  };
+
+  // Calculate average grade
+  const calculateAverage = (grades: number[]) => {
+    const avgGrade = grades.reduce((sum, g) => sum + g, 0) / grades.length;
+    return Math.round(avgGrade);
+  };
+
+  const assignments = [
+    generateGrade(0),    // hw1
+    generateGrade(2),    // hw2
+    generateGrade(-1),   // hw3
+    generateGrade(3),    // hw4
+    generateGrade(1),    // hw5
+    generateGrade(-2),   // quiz1
+    generateGrade(0),    // quiz2
+    generateGrade(1),    // quiz3
+    generateGrade(-3),   // quiz4
+    generateGrade(2),    // quiz5
+    generateGrade(-5),   // test1
+    generateGrade(-4),   // test2
+    generateGrade(-3),   // test3
+    generateGrade(-6),   // test4
+    generateGrade(4),    // lab1
+    generateGrade(3),    // lab2
+    generateGrade(2),    // lab3
+    generateGrade(1),    // lab4
+    generateGrade(-8),   // project1
+    generateGrade(-7),   // project2
+    generateGrade(5),    // essay1
+    generateGrade(4),    // essay2
+    generateGrade(-2),   // presentation1
+    generateGrade(-1),   // presentation2
+    generateGrade(-10),  // midterm
+    generateGrade(-12),  // final
+    generateGrade(8),    // participation
+  ];
+
   const row: Record<string, string | number> = {
     id,
     name,
-    age,
+    age: gradeLevel,
+    hw1: assignments[0],
+    hw2: assignments[1],
+    hw3: assignments[2],
+    hw4: assignments[3],
+    hw5: assignments[4],
+    quiz1: assignments[5],
+    quiz2: assignments[6],
+    quiz3: assignments[7],
+    quiz4: assignments[8],
+    quiz5: assignments[9],
+    test1: assignments[10],
+    test2: assignments[11],
+    test3: assignments[12],
+    test4: assignments[13],
+    lab1: assignments[14],
+    lab2: assignments[15],
+    lab3: assignments[16],
+    lab4: assignments[17],
+    project1: assignments[18],
+    project2: assignments[19],
+    essay1: assignments[20],
+    essay2: assignments[21],
+    presentation1: assignments[22],
+    presentation2: assignments[23],
+    midterm: assignments[24],
+    final: assignments[25],
+    participation: assignments[26],
+    avg: calculateAverage(assignments),
+    attendance: Math.round(85 + Math.random() * 15) + "%",
   };
-
-  // Generate col1 through col30
-  for (let i = 1; i <= 30; i++) {
-    row[`col${i}`] = `value ${i}`;
-  }
 
   return row;
 }
 
-// Sample names and ages for grid data
-const sampleData = [
-  { name: "John Doe", age: 30 },
-  { name: "Jane Smith", age: 25 },
-  { name: "Sam Johnson", age: 40 },
-  { name: "Emily Davis", age: 28 },
-  { name: "Michael Brown", age: 35 },
-  { name: "Sarah Wilson", age: 32 },
-  { name: "David Martinez", age: 45 },
-  { name: "Jessica Anderson", age: 27 },
-  { name: "Christopher Taylor", age: 38 },
-  { name: "Amanda Thomas", age: 31 },
-  { name: "Robert Garcia", age: 42 },
-  { name: "Jennifer Rodriguez", age: 29 },
-  { name: "Matthew Lee", age: 36 },
-  { name: "Lisa Walker", age: 33 },
-  { name: "Daniel Harris", age: 41 },
-  { name: "Nicole Clark", age: 26 },
-  { name: "Kevin Lewis", age: 39 },
-  { name: "Karen Robinson", age: 34 },
-  { name: "Brian Young", age: 43 },
-  { name: "Michelle Hall", age: 30 },
-  { name: "Steven Allen", age: 37 },
-  { name: "Laura King", age: 28 },
-  { name: "Kenneth Wright", age: 44 },
-  { name: "Rebecca Scott", age: 31 },
-  { name: "Patrick Green", age: 46 },
-  { name: "Stephanie Adams", age: 29 },
-  { name: "Gregory Baker", age: 38 },
-  { name: "Angela Nelson", age: 33 },
+// Sample student data with names, grade levels, and base performance
+const studentData = [
+  { name: "Emma Johnson", gradeLevel: 10, basePerformance: 92 },
+  { name: "Liam Smith", gradeLevel: 10, basePerformance: 78 },
+  { name: "Olivia Williams", gradeLevel: 11, basePerformance: 88 },
+  { name: "Noah Brown", gradeLevel: 9, basePerformance: 85 },
+  { name: "Ava Davis", gradeLevel: 12, basePerformance: 95 },
+  { name: "Ethan Martinez", gradeLevel: 10, basePerformance: 72 },
+  { name: "Sophia Rodriguez", gradeLevel: 11, basePerformance: 90 },
+  { name: "Mason Garcia", gradeLevel: 9, basePerformance: 68 },
+  { name: "Isabella Wilson", gradeLevel: 12, basePerformance: 87 },
+  { name: "William Anderson", gradeLevel: 10, basePerformance: 83 },
+  { name: "Mia Taylor", gradeLevel: 11, basePerformance: 91 },
+  { name: "James Thomas", gradeLevel: 9, basePerformance: 75 },
+  { name: "Charlotte Jackson", gradeLevel: 12, basePerformance: 89 },
+  { name: "Benjamin White", gradeLevel: 10, basePerformance: 81 },
+  { name: "Amelia Harris", gradeLevel: 11, basePerformance: 94 },
+  { name: "Lucas Martin", gradeLevel: 9, basePerformance: 70 },
+  { name: "Harper Thompson", gradeLevel: 12, basePerformance: 86 },
+  { name: "Alexander Lee", gradeLevel: 10, basePerformance: 79 },
+  { name: "Evelyn Walker", gradeLevel: 11, basePerformance: 93 },
+  { name: "Michael Hall", gradeLevel: 9, basePerformance: 74 },
+  { name: "Abigail Allen", gradeLevel: 12, basePerformance: 88 },
+  { name: "Daniel Young", gradeLevel: 10, basePerformance: 82 },
+  { name: "Emily King", gradeLevel: 11, basePerformance: 90 },
+  { name: "Matthew Wright", gradeLevel: 9, basePerformance: 76 },
+  { name: "Ella Lopez", gradeLevel: 12, basePerformance: 92 },
+  { name: "Henry Hill", gradeLevel: 10, basePerformance: 80 },
+  { name: "Scarlett Scott", gradeLevel: 11, basePerformance: 87 },
+  { name: "Jackson Green", gradeLevel: 9, basePerformance: 73 },
 ];
 
-
 // Generate grid data using the factory function
-export const gridData = sampleData.map((data, index) =>
-  createGridRow(index + 1, data.name, data.age)
+export const gridData = studentData.map((student, index) =>
+  createStudentRow(index + 1, student.name, student.gradeLevel, student.basePerformance)
 );
