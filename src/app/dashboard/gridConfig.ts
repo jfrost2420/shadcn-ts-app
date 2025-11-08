@@ -2,35 +2,34 @@ export const gridColumns = [
   { id: "id", header: [{ text: "Student ID" }], width: 120 },
   { id: "name", header: [{ text: "Student Name" }], width: 200 },
   { id: "age", header: [{ text: "Grade Level" }], width: 120 },
-  { id: "mathematics", header: [{ text: "Mathematics" }], width: 120 },
-  { id: "english", header: [{ text: "English" }], width: 100 },
-  { id: "science", header: [{ text: "Science" }], width: 100 },
-  { id: "history", header: [{ text: "History" }], width: 100 },
-  { id: "geography", header: [{ text: "Geography" }], width: 120 },
-  { id: "physics", header: [{ text: "Physics" }], width: 100 },
-  { id: "chemistry", header: [{ text: "Chemistry" }], width: 120 },
-  { id: "biology", header: [{ text: "Biology" }], width: 100 },
-  { id: "literature", header: [{ text: "Literature" }], width: 120 },
-  { id: "writing", header: [{ text: "Writing" }], width: 100 },
-  { id: "art", header: [{ text: "Art" }], width: 100 },
-  { id: "music", header: [{ text: "Music" }], width: 100 },
-  { id: "physical_ed", header: [{ text: "Physical Ed" }], width: 120 },
-  { id: "computer_sci", header: [{ text: "Computer Sci" }], width: 130 },
-  { id: "economics", header: [{ text: "Economics" }], width: 120 },
-  { id: "psychology", header: [{ text: "Psychology" }], width: 130 },
-  { id: "sociology", header: [{ text: "Sociology" }], width: 120 },
-  { id: "french", header: [{ text: "French" }], width: 100 },
-  { id: "spanish", header: [{ text: "Spanish" }], width: 100 },
-  { id: "statistics", header: [{ text: "Statistics" }], width: 120 },
-  { id: "calculus", header: [{ text: "Calculus" }], width: 100 },
-  { id: "algebra", header: [{ text: "Algebra" }], width: 100 },
-  { id: "geometry", header: [{ text: "Geometry" }], width: 100 },
-  { id: "drama", header: [{ text: "Drama" }], width: 100 },
-  { id: "debate", header: [{ text: "Debate" }], width: 100 },
-  { id: "health", header: [{ text: "Health" }], width: 100 },
-  { id: "ethics", header: [{ text: "Ethics" }], width: 100 },
-  { id: "philosophy", header: [{ text: "Philosophy" }], width: 120 },
-  { id: "gpa", header: [{ text: "GPA" }], width: 100 },
+  { id: "hw1", header: [{ text: "HW 1" }], width: 100 },
+  { id: "hw2", header: [{ text: "HW 2" }], width: 100 },
+  { id: "hw3", header: [{ text: "HW 3" }], width: 100 },
+  { id: "hw4", header: [{ text: "HW 4" }], width: 100 },
+  { id: "hw5", header: [{ text: "HW 5" }], width: 100 },
+  { id: "quiz1", header: [{ text: "Quiz 1" }], width: 100 },
+  { id: "quiz2", header: [{ text: "Quiz 2" }], width: 100 },
+  { id: "quiz3", header: [{ text: "Quiz 3" }], width: 100 },
+  { id: "quiz4", header: [{ text: "Quiz 4" }], width: 100 },
+  { id: "quiz5", header: [{ text: "Quiz 5" }], width: 100 },
+  { id: "test1", header: [{ text: "Test 1" }], width: 100 },
+  { id: "test2", header: [{ text: "Test 2" }], width: 100 },
+  { id: "test3", header: [{ text: "Test 3" }], width: 100 },
+  { id: "test4", header: [{ text: "Test 4" }], width: 100 },
+  { id: "lab1", header: [{ text: "Lab 1" }], width: 100 },
+  { id: "lab2", header: [{ text: "Lab 2" }], width: 100 },
+  { id: "lab3", header: [{ text: "Lab 3" }], width: 100 },
+  { id: "lab4", header: [{ text: "Lab 4" }], width: 100 },
+  { id: "project1", header: [{ text: "Project 1" }], width: 110 },
+  { id: "project2", header: [{ text: "Project 2" }], width: 110 },
+  { id: "essay1", header: [{ text: "Essay 1" }], width: 100 },
+  { id: "essay2", header: [{ text: "Essay 2" }], width: 100 },
+  { id: "presentation1", header: [{ text: "Presentation 1" }], width: 130 },
+  { id: "presentation2", header: [{ text: "Presentation 2" }], width: 130 },
+  { id: "midterm", header: [{ text: "Midterm" }], width: 100 },
+  { id: "final", header: [{ text: "Final Exam" }], width: 110 },
+  { id: "participation", header: [{ text: "Participation" }], width: 120 },
+  { id: "avg", header: [{ text: "Average" }], width: 100 },
   { id: "attendance", header: [{ text: "Attendance %" }], width: 130 },
 ];
 
@@ -47,76 +46,74 @@ function createStudentRow(
     return Math.round(grade);
   };
 
-  // Calculate GPA (0-4.0 scale)
-  const calculateGPA = (grades: number[]) => {
+  // Calculate average grade
+  const calculateAverage = (grades: number[]) => {
     const avgGrade = grades.reduce((sum, g) => sum + g, 0) / grades.length;
-    return ((avgGrade / 100) * 4.0).toFixed(2);
+    return Math.round(avgGrade);
   };
 
-  const subjects = [
-    generateGrade(0),    // mathematics
-    generateGrade(5),    // english
-    generateGrade(-3),   // science
-    generateGrade(2),    // history
-    generateGrade(0),    // geography
-    generateGrade(-5),   // physics
-    generateGrade(-2),   // chemistry
-    generateGrade(3),    // biology
-    generateGrade(8),    // literature
-    generateGrade(6),    // writing
-    generateGrade(10),   // art
-    generateGrade(12),   // music
-    generateGrade(15),   // physical_ed
-    generateGrade(-8),   // computer_sci
-    generateGrade(1),    // economics
-    generateGrade(4),    // psychology
-    generateGrade(3),    // sociology
-    generateGrade(-4),   // french
-    generateGrade(-2),   // spanish
-    generateGrade(-10),  // statistics
-    generateGrade(-12),  // calculus
-    generateGrade(-5),   // algebra
-    generateGrade(-3),   // geometry
-    generateGrade(14),   // drama
-    generateGrade(7),    // debate
-    generateGrade(9),    // health
-    generateGrade(5),    // ethics
-    generateGrade(2),    // philosophy
+  const assignments = [
+    generateGrade(0),    // hw1
+    generateGrade(2),    // hw2
+    generateGrade(-1),   // hw3
+    generateGrade(3),    // hw4
+    generateGrade(1),    // hw5
+    generateGrade(-2),   // quiz1
+    generateGrade(0),    // quiz2
+    generateGrade(1),    // quiz3
+    generateGrade(-3),   // quiz4
+    generateGrade(2),    // quiz5
+    generateGrade(-5),   // test1
+    generateGrade(-4),   // test2
+    generateGrade(-3),   // test3
+    generateGrade(-6),   // test4
+    generateGrade(4),    // lab1
+    generateGrade(3),    // lab2
+    generateGrade(2),    // lab3
+    generateGrade(1),    // lab4
+    generateGrade(-8),   // project1
+    generateGrade(-7),   // project2
+    generateGrade(5),    // essay1
+    generateGrade(4),    // essay2
+    generateGrade(-2),   // presentation1
+    generateGrade(-1),   // presentation2
+    generateGrade(-10),  // midterm
+    generateGrade(-12),  // final
+    generateGrade(8),    // participation
   ];
 
   const row: Record<string, string | number> = {
     id,
     name,
     age: gradeLevel,
-    mathematics: subjects[0],
-    english: subjects[1],
-    science: subjects[2],
-    history: subjects[3],
-    geography: subjects[4],
-    physics: subjects[5],
-    chemistry: subjects[6],
-    biology: subjects[7],
-    literature: subjects[8],
-    writing: subjects[9],
-    art: subjects[10],
-    music: subjects[11],
-    physical_ed: subjects[12],
-    computer_sci: subjects[13],
-    economics: subjects[14],
-    psychology: subjects[15],
-    sociology: subjects[16],
-    french: subjects[17],
-    spanish: subjects[18],
-    statistics: subjects[19],
-    calculus: subjects[20],
-    algebra: subjects[21],
-    geometry: subjects[22],
-    drama: subjects[23],
-    debate: subjects[24],
-    health: subjects[25],
-    ethics: subjects[26],
-    philosophy: subjects[27],
-    gpa: calculateGPA(subjects),
+    hw1: assignments[0],
+    hw2: assignments[1],
+    hw3: assignments[2],
+    hw4: assignments[3],
+    hw5: assignments[4],
+    quiz1: assignments[5],
+    quiz2: assignments[6],
+    quiz3: assignments[7],
+    quiz4: assignments[8],
+    quiz5: assignments[9],
+    test1: assignments[10],
+    test2: assignments[11],
+    test3: assignments[12],
+    test4: assignments[13],
+    lab1: assignments[14],
+    lab2: assignments[15],
+    lab3: assignments[16],
+    lab4: assignments[17],
+    project1: assignments[18],
+    project2: assignments[19],
+    essay1: assignments[20],
+    essay2: assignments[21],
+    presentation1: assignments[22],
+    presentation2: assignments[23],
+    midterm: assignments[24],
+    final: assignments[25],
+    participation: assignments[26],
+    avg: calculateAverage(assignments),
     attendance: Math.round(85 + Math.random() * 15) + "%",
   };
 
