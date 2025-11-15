@@ -1,6 +1,4 @@
 import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
 import { useState } from "react";
 import type { ColDef } from "ag-grid-community";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
@@ -31,7 +29,7 @@ export default function Grid() {
 
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-      <div className="ag-theme-quartz" style={{ height: 500, width: "100%" }}>
+      <div style={{ height: 500, width: "100%" }}>
         <AgGridReact rowData={rowData} columnDefs={colDefs} />
       </div>
     </div>
